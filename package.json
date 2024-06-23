@@ -2,20 +2,39 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "description": "Примитивнейшее туду приложение, для теста медиа-запросов",
+  "author": "Харуки",
+  "build": {
+    "appId": "com.todoapp"
+  },
+  "main": "public/electron.js",
+  "homepage": "./",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "concurrently": "^8.2.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
+    "react-spring": "^9.7.3",
+    "sass": "^1.77.6",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "electron": "^31.0.2",
+    "electron-build": "^0.0.3",
+    "electron-builder": "^24.13.3"
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test --env=jsdom",
+    "react-eject": "react-scripts eject",
+    "electron-build": "electron-builder",
+    "release": "npm run react-build && electron-builder --publish=always",
+    "build": "npm run react-build && npm run electron-build",
+    "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\""
   },
   "eslintConfig": {
     "extends": [

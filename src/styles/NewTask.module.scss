@@ -1,0 +1,48 @@
+.wrapper {
+    margin-top: 12px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+
+    .form {
+        width: 60%;
+        display: grid;
+        grid-template-columns: 5fr 1fr;
+        gap: 30px;
+        justify-content: center;
+
+        > * {
+            box-sizing: border-box;
+            width: 100%;
+           font-size: 1em;
+
+           border: 1px solid rgba(0, 0, 0, 0.45);
+           border-radius: .25em;
+           padding: 5px 10px;
+
+           @media (max-width: 750px) {
+            font-size: .8em;
+           }
+        }
+
+        > input[type="button"] {
+            background: none;
+            transition: all .2s;
+
+            &:hover {
+                transform: scale(.95);
+            }
+
+            &:active {
+                transform: scale(.9);
+            }
+        }
+
+        @media (max-width: 750px) {
+            gap: 10px;
+        }
+    }
+}
